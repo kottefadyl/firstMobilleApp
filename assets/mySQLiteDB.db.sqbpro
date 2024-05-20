@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="D:/Formation/mobileTest/kotte/assets/mySQLiteDB.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1802"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,10:mainCategories"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Categories" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="112"/><column index="3" value="54"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="Transactions" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="40"/><column index="2" value="97"/><column index="3" value="60"/><column index="4" value="150"/><column index="5" value="165"/><column index="6" value="54"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">
+CREATE TABlE IF NOT EXISTS Categories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    type TEXTE NOT NULL CHECK (type IN('Expense', 'Income'))
+);
+
+CREATE TABLE &quot;Transactions&quot; (
+	&quot;id&quot;	INTEGER,
+	&quot;Categories_id&quot;	INTEGER,
+	&quot;amount&quot;	REAL NOT NULL,
+	&quot;date&quot;	INTEGER NOT NULL,
+	&quot;description&quot;	TEXT,
+	&quot;type&quot;	TEXT NOT NULL CHECK(&quot;type&quot; IN ('Expense', 'Income')),
+	PRIMARY KEY(&quot;id&quot; AUTOINCREMENT),
+	FOREIGN KEY(&quot;Categories_id&quot;) REFERENCES &quot;Categories&quot;(&quot;id&quot;)
+);
+
+-- 3. insert data
+INSERT INTO Categories (name, type) VALUES ('Utilities', 'Expense');
+INSERT INTO Categories (name, type) VALUES ('Electronics', 'Expense');
+INSERT INTO Categories (name, type) VALUES ('Dining Out', 'Expense');
+INSERT INTO Categories (name, type) VALUES ('Breakfast Supplies', 'Expense');
+INSERT INTO Categories (name, type) VALUES ('Household Items', 'Expense');
+
+INSERT INTO Transactions(Categories_id,amount,date,description,type) VALUES(2,1200,1707740400,'Montly rent','Expense');
+
+INSERT INTO Transactions (Categories_id, amount, date, description, type)
+VALUES (1, 50, 1707740400 + random()*365, 'Sample Utility Bill', 'Expense'),
+       (3, 150, 1707740400 + random()*365, 'Sample Restaurant Dinner', 'Expense'),
+       (4, 20, 1707740400 + random()*365, 'Sample Breakfast Groceries', 'Expense'),
+       (5, 35, 1707740400 + random()*365, 'Sample Suppliesqsd', 'Expense'),
+       (1, 150, 1707740400 + random()*365, 'transaction 1qsd', 'Expense'),
+       (2, 150, 1707740400 + random()*365, 'transaction 2qsd', 'Expense'),
+       (3, 150, 1707740400 + random()*365, 'transaction 3qd', 'Expense'),
+       (4, 1100, 1707740400 + random()*365, 'transaction 5qsd', 'Expense'),
+       (5, 150, 1707740400 + random()*365, 'transaction 6qd', 'Expense'),
+        (1, 170, 1707740400 + random()*365, 'transaction 1dqs', 'Expense'),
+        (1, 120, 1707740400 + random()*365, 'transaction 1dqf', 'Expense'),
+        (1, 1650, 1707740400 + random()*365, 'transaction 1vf', 'Expense'),
+        (2, 150, 1707740400 + random()*365, 'transaction 1sd', 'Expense'),
+        (1, 10, 1707740400 + random()*365, 'transaction 1sq', 'Expense'),
+        (4, 180, 1707740400 + random()*365, 'transaction 1h', 'Expense'),
+        (1, 50, 1707740400 + random()*365, 'transaction 1', 'Expense'),
+        (1, 700, 1707740400 + random()*365, 'transaction 1', 'Expense'),
+        (3, 99, 1707740400 + random()*365, 'Sample Restaurant cook', 'Expense'),
+        (4, 780, 1707740400 + random()*365, 'Spelding', 'Expense'),
+        (2, 80, 1707740400 + random()*365, 'Sample Restaurant Dinner', 'Expense'),
+        (2, 187236, 1707740400 + random()*365, 'financial exchange portable', 'Expense');</sql><current_tab id="0"/></tab_sql></sqlb_project>
